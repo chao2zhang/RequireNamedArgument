@@ -23,9 +23,9 @@ buildConfig {
 
 gradlePlugin {
     plugins {
-        create("explicitParamGradlePlugin") {
+        create("requireNamedArgumentGradlePlugin") {
             id = pluginId
-            implementationClass = "com.chao2zhang.explicitparam.ExplicitParamGradlePlugin"
+            implementationClass = "com.chao2zhang.rna.RnaGradlePlugin"
         }
     }
 }

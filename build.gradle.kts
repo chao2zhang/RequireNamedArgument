@@ -1,4 +1,4 @@
-val pluginId by extra("com.chao2zhang.explicit-param")
+val pluginId by extra("com.chao2zhang.rna")
 
 plugins {
     kotlin("jvm") version "1.4.21" apply false
@@ -13,6 +13,6 @@ subprojects {
 }
 
 allprojects {
-    group = "com.chao2zhang.explicitparam"
+    group = "com.chao2zhang.rna"
     version = "0.0.1"
 }

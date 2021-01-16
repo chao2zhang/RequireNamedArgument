@@ -1,4 +1,4 @@
-package com.chao2zhang.explicitparam
+package com.chao2zhang.rna
 
 import org.gradle.api.Project
 import org.gradle.api.provider.Provider
@@ -7,7 +7,7 @@ import org.jetbrains.kotlin.gradle.plugin.KotlinCompilerPluginSupportPlugin
 import org.jetbrains.kotlin.gradle.plugin.SubpluginArtifact
 import org.jetbrains.kotlin.gradle.plugin.SubpluginOption
 
-class ExplicitParamGradlePlugin : KotlinCompilerPluginSupportPlugin {
+class RnaGradlePlugin : KotlinCompilerPluginSupportPlugin {
 
     override fun apply(target: Project) {
     }

@@ -1,13 +1,5 @@
-pluginManagement {
-    repositories {
-        mavenLocal()
-        gradlePluginPortal()
-    }
-}
-
-rootProject.name = "explicit-param"
+rootProject.name = "RequireNamedArgument"
 
 include(":annotation")
 include(":compiler-plugin")
 include(":gradle-plugin")
-include(":sample")

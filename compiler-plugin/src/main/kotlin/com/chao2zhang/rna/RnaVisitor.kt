@@ -1,6 +1,6 @@
-package com.chao2zhang.explicitparam
+package com.chao2zhang.rna
 
-import com.chao2zhang.ExplicitParams
+import com.chao2zhang.RequireNamedArgument
 import org.jetbrains.kotlin.cli.common.messages.CompilerMessageSeverity
 import org.jetbrains.kotlin.cli.common.messages.MessageCollector
 import org.jetbrains.kotlin.cli.common.messages.MessageUtil
@@ -11,14 +11,13 @@ import org.jetbrains.kotlin.psi.KtTreeVisitorVoid
 import org.jetbrains.kotlin.resolve.BindingContext
 import org.jetbrains.kotlin.resolve.calls.callUtil.getResolvedCall
 
-class ExplicitParamVisitor(
+class RnaVisitor(
     private val logger: MessageCollector,
     private val bindingContext: BindingContext
 ): KtTreeVisitorVoid() {
 
     override fun visitCallExpression(expression: KtCallExpression) {
         super.visitCallExpression(expression)
-        logger.report(CompilerMessageSeverity.WARNING, expression.getResolvedCall(bindingContext)?.toString() ?: "")
         val resultingDescriptor: CallableDescriptor =
             expression.getResolvedCall(bindingContext)?.resultingDescriptor ?: return
         if (!resultingDescriptor.annotations.hasAnnotation(ANNOTATION_FQ_NAME))
@@ -28,7 +27,7 @@ class ExplicitParamVisitor(
                 logger.report(
                     CompilerMessageSeverity.ERROR,
                     "Argument ${arg.text} is not named " +
-                        "but the function '${resultingDescriptor.name}' has @ExplicitParams.",
+                        "but the function '${resultingDescriptor.name}' has @RequireNamedArgument.",
                     MessageUtil.psiElementToMessageLocation(arg)
                 )
             }
@@ -36,4 +35,4 @@ class ExplicitParamVisitor(
     }
 }
 
-private val ANNOTATION_FQ_NAME = FqName(ExplicitParams::class.qualifiedName!!)
+private val ANNOTATION_FQ_NAME = FqName(RequireNamedArgument::class.qualifiedName!!)
