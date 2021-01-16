@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm")
     kotlin("kapt")
     id("com.github.gmazzo.buildconfig")
+    id("maven-publish")
 }
 
 dependencies {
@@ -12,9 +13,17 @@ dependencies {
 
 buildConfig {
     packageName(group.toString())
-    buildConfigField("String", "KOTLIN_PLUGIN_ID", "\"${rootProject.extra["pluginId"]}\"")
+    buildConfigField("String", "PLUGIN_ID", "\"${rootProject.extra["pluginId"]}\"")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
 }

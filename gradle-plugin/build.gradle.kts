@@ -2,6 +2,7 @@ plugins {
     id("java-gradle-plugin")
     kotlin("jvm")
     id("com.github.gmazzo.buildconfig")
+    id("maven-publish")
 }
 
 dependencies {
@@ -14,10 +15,10 @@ val pluginId: String by rootProject.extra
 buildConfig {
     val project = project(":compiler-plugin")
     packageName(project.group.toString())
-    buildConfigField("String", "KOTLIN_PLUGIN_ID", "\"$pluginId\"")
-    buildConfigField("String", "KOTLIN_PLUGIN_GROUP", "\"${project.group}\"")
-    buildConfigField("String", "KOTLIN_PLUGIN_NAME", "\"${project.name}\"")
-    buildConfigField("String", "KOTLIN_PLUGIN_VERSION", "\"${project.version}\"")
+    buildConfigField("String", "PLUGIN_ID", "\"$pluginId\"")
+    buildConfigField("String", "PLUGIN_GROUP", "\"${project.group}\"")
+    buildConfigField("String", "PLUGIN_NAME", "\"${project.name}\"")
+    buildConfigField("String", "PLUGIN_VERSION", "\"${project.version}\"")
 }
 
 gradlePlugin {

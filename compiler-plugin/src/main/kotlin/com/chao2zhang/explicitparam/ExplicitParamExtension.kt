@@ -13,7 +13,7 @@ import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.resolve.BindingTrace
 import org.jetbrains.kotlin.resolve.jvm.extensions.AnalysisHandlerExtension
 
-@AutoService(ComponentRegistrar::class)
+@AutoService(AnalysisHandlerExtension::class)
 class ExplicitParamExtension(
     private val logger: MessageCollector
 ) : AnalysisHandlerExtension {

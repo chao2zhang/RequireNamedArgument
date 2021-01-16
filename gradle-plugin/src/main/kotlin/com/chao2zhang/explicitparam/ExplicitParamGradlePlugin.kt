@@ -12,15 +12,20 @@ class ExplicitParamGradlePlugin : KotlinCompilerPluginSupportPlugin {
     override fun apply(target: Project) {
     }
 
-    override fun applyToCompilation(kotlinCompilation: KotlinCompilation<*>): Provider<List<SubpluginOption>> =
-        kotlinCompilation.target.project.provider { emptyList() }
+    override fun applyToCompilation(kotlinCompilation: KotlinCompilation<*>): Provider<List<SubpluginOption>> {
+        kotlinCompilation.target.project.dependencies.add(
+            "compileOnly",
+            "${BuildConfig.PLUGIN_GROUP}:compiler-plugin:${BuildConfig.PLUGIN_VERSION}"
+        )
+        return kotlinCompilation.target.project.provider { emptyList() }
+    }
 
-    override fun getCompilerPluginId(): String = BuildConfig.KOTLIN_PLUGIN_ID
+    override fun getCompilerPluginId(): String = BuildConfig.PLUGIN_ID
 
     override fun getPluginArtifact(): SubpluginArtifact = SubpluginArtifact(
-        groupId = BuildConfig.KOTLIN_PLUGIN_GROUP,
-        artifactId = BuildConfig.KOTLIN_PLUGIN_NAME,
-        version = BuildConfig.KOTLIN_PLUGIN_VERSION
+        groupId = BuildConfig.PLUGIN_GROUP,
+        artifactId = BuildConfig.PLUGIN_NAME,
+        version = BuildConfig.PLUGIN_VERSION
     )
 
     override fun isApplicable(kotlinCompilation: KotlinCompilation<*>): Boolean = true

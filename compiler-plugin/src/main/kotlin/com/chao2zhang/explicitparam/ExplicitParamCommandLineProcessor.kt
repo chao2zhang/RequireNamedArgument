@@ -7,7 +7,7 @@ import org.jetbrains.kotlin.compiler.plugin.CommandLineProcessor
 @AutoService(CommandLineProcessor::class)
 class ExplicitParamCommandLineProcessor : CommandLineProcessor {
 
-    override val pluginId: String = BuildConfig.KOTLIN_PLUGIN_ID
+    override val pluginId: String = BuildConfig.PLUGIN_ID
 
     override val pluginOptions: Collection<AbstractCliOption> = emptyList()
 }
