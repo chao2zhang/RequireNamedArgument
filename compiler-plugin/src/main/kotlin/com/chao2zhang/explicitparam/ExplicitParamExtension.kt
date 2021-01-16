@@ -18,15 +18,27 @@ class ExplicitParamExtension(
     private val logger: MessageCollector
 ) : AnalysisHandlerExtension {
 
-    override fun doAnalysis(
+//    override fun doAnalysis(
+//        project: Project,
+//        module: ModuleDescriptor,
+//        projectContext: ProjectContext,
+//        files: Collection<KtFile>,
+//        bindingTrace: BindingTrace,
+//        componentProvider: ComponentProvider
+//    ): AnalysisResult? {
+//        val visitor = ExplicitParamVisitor(logger, bindingTrace.bindingContext)
+//        files.forEach { it.accept(visitor) }
+//        return null
+//    }
+
+    override fun analysisCompleted(
         project: Project,
         module: ModuleDescriptor,
-        projectContext: ProjectContext,
-        files: Collection<KtFile>,
         bindingTrace: BindingTrace,
-        componentProvider: ComponentProvider
-    ): AnalysisResult? {
-        logger.report(CompilerMessageSeverity.ERROR, "Yo")
+        files: Collection<KtFile>)
+    : AnalysisResult? {
+        val visitor = ExplicitParamVisitor(logger, bindingTrace.bindingContext)
+        files.forEach { it.accept(visitor) }
         return null
     }
 }
