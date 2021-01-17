@@ -1,6 +1,6 @@
 # Require named argument
 
-This is a solution to enforce named arguments usage for callers of a function.
+Enforce named arguments usage for callers of a function through a Kotlin Compiler Plugin.
 See [KT-14934](https://youtrack.jetbrains.com/issue/KT-14934)
 
 Once this issue is addressed by Jetbrains/Kotlin, this solution should be deprecated
