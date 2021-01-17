@@ -13,7 +13,7 @@ dependencies {
 val pluginId: String by rootProject.extra
 
 buildConfig {
-    val project = project(":compiler-plugin")
+    val project = project(":rna-compiler-plugin")
     packageName(project.group.toString())
     buildConfigField("String", "PLUGIN_ID", "\"$pluginId\"")
     buildConfigField("String", "PLUGIN_GROUP", "\"${project.group}\"")
@@ -25,7 +25,7 @@ gradlePlugin {
     plugins {
         create("requireNamedArgumentGradlePlugin") {
             id = pluginId
-            implementationClass = "com.chao2zhang.rna.RnaGradlePlugin"
+            implementationClass = "io.github.chao2zhang.RnaGradlePlugin"
         }
     }
 }

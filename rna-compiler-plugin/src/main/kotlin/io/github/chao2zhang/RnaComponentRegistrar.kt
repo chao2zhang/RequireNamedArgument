@@ -1,4 +1,4 @@
-package com.chao2zhang.rna
+package io.github.chao2zhang
 
 import com.google.auto.service.AutoService
 import org.jetbrains.kotlin.cli.common.CLIConfigurationKeys

@@ -1,6 +1,6 @@
-package com.chao2zhang.rna
+package io.github.chao2zhang
 
-import com.chao2zhang.RequireNamedArgument
+import io.github.chao2zhang.RequireNamedArgument
 import org.jetbrains.kotlin.cli.common.messages.CompilerMessageSeverity
 import org.jetbrains.kotlin.cli.common.messages.MessageCollector
 import org.jetbrains.kotlin.cli.common.messages.MessageUtil

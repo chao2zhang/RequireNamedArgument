@@ -6,7 +6,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":annotation"))
+    implementation(project(":rna-annotation"))
     compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable")
     kapt("com.google.auto.service:auto-service:1.0-rc7")
     compileOnly("com.google.auto.service:auto-service-annotations:1.0-rc7")

@@ -1,4 +1,4 @@
-val pluginId by extra("com.chao2zhang.rna")
+val pluginId by extra("io.github.chaozhang.rna")
 
 plugins {
     kotlin("jvm") version "1.4.21" apply false
@@ -13,6 +13,6 @@ subprojects {
 }
 
 allprojects {
-    group = "com.chao2zhang.rna"
+    group = "io.github.chao2zhang"
     version = "0.0.1"
 }

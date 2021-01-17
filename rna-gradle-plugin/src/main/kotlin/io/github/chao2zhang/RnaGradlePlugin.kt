@@ -1,4 +1,4 @@
-package com.chao2zhang.rna
+package io.github.chao2zhang
 
 import org.gradle.api.Project
 import org.gradle.api.provider.Provider
@@ -15,7 +15,7 @@ class RnaGradlePlugin : KotlinCompilerPluginSupportPlugin {
     override fun applyToCompilation(kotlinCompilation: KotlinCompilation<*>): Provider<List<SubpluginOption>> {
         kotlinCompilation.target.project.dependencies.add(
             "compileOnly",
-            "${BuildConfig.PLUGIN_GROUP}:compiler-plugin:${BuildConfig.PLUGIN_VERSION}"
+            "${BuildConfig.PLUGIN_GROUP}:rna-compiler-plugin:${BuildConfig.PLUGIN_VERSION}"
         )
         return kotlinCompilation.target.project.provider { emptyList() }
     }
