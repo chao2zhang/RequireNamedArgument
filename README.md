@@ -1,9 +1,29 @@
 # Require named argument
 
-This is a solution to enforce named arguments usage for callers of a function.
+Enforce named arguments usage for callers of a function through a Kotlin Compiler Plugin.
 See [KT-14934](https://youtrack.jetbrains.com/issue/KT-14934)
 
-Once this issue is addressed by Jetbrains/Kotlin, this solution should be deprecated
+Once this issue is addressed by Jetbrains/Kotlin, this solution should be deprecated.
+
+## Usage
+
+1. In the build script,
+    - Apply the plugin `id("io.github.chao2zhang.rna") version "x.y.z"`.
+    - Add the dependency to the annotation.
+    ```
+    dependencies {
+        implementation("io.github.chao2zhang:rna-annotation:x.y.z")
+    }
+    ```
+2. At the declaration site, annotate functions with `@RequireNamedArgument`
+3. At the caller site, `:compileKotlin` should fail in functions with `@RequireNamedArgument` are invoked without named arguments.
+
+A full example can be found in `sample/`.
+
+## TODO
+
+- Add unit tests
+- Support annotating specific parameters
 
 ## License
 ```
