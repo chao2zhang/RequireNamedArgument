@@ -1,23 +1,14 @@
 name: Build
-
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - '**'
-
+on: [push]
 jobs:
-  gradle:
+  gradle-build:
     runs-on: ubuntu-latest
     env:
       JDK_VERSION: 11
       GRADLE_OPTS: -Dorg.gradle.daemon=false
     steps:
-      - name: Setup Java
-        uses: actions/setup-java@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Build
-        run: ./gradlew build
+      - run: ./gradlew build
