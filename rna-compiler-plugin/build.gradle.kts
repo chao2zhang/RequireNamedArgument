@@ -3,6 +3,7 @@ plugins {
     kotlin("kapt")
     id("com.github.gmazzo.buildconfig")
     id("com.vanniktech.maven.publish")
+    id("io.gitlab.arturbosch.detekt")
 }
 
 dependencies {

@@ -9,9 +9,6 @@ import org.jetbrains.kotlin.gradle.plugin.SubpluginOption
 
 class RnaGradlePlugin : KotlinCompilerPluginSupportPlugin {
 
-    override fun apply(target: Project) {
-    }
-
     override fun applyToCompilation(kotlinCompilation: KotlinCompilation<*>): Provider<List<SubpluginOption>> {
         kotlinCompilation.target.project.dependencies.add(
             "compileOnly",
