@@ -34,5 +34,4 @@ class RnaVisitor(
         }
     }
 }
-
 private val ANNOTATION_FQ_NAME = FqName(RequireNamedArgument::class.qualifiedName!!)

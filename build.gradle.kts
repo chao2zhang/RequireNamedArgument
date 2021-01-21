@@ -6,6 +6,7 @@ plugins {
     id("org.jetbrains.dokka") version "1.4.20" apply false
     id("com.github.gmazzo.buildconfig") version "2.0.2" apply false
     id("io.gitlab.arturbosch.detekt") version "1.15.0" apply false
+    id("io.gitlab.arturbosch.detekt.project") version "1.15.0"
 }
 
 repositories {
