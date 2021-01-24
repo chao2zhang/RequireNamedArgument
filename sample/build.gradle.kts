@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "1.4.21"
-    id("io.github.chao2zhang.rna") version "0.1.0"
+    id("io.github.chao2zhang.rna") version "0.2.0"
 }
 
 repositories {
@@ -8,5 +8,5 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.chao2zhang:rna-annotation:0.1.0")
+    implementation("io.github.chao2zhang:rna-annotation:0.2.0")
 }
