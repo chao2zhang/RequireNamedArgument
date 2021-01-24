@@ -1,5 +1,7 @@
 # Require named argument
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.chao2zhang/rna-gradle-plugin)](https://search.maven.org/artifact/io.github.chao2zhang/rna-gradle-plugin)
+
 Enforce named arguments usage for callers of a function through a Kotlin Compiler Plugin.
 See [KT-14934](https://youtrack.jetbrains.com/issue/KT-14934)
 
