@@ -23,7 +23,10 @@ class RnaGradlePluginTest {
         val result = compile(listOf(REQUIRE_NAMED_ARGUMENT, main))
         assertEquals(KotlinCompilation.ExitCode.COMPILATION_ERROR, result.exitCode)
         assertTrue(result.messages.contains(
-            "Argument 2 is not named but the function 'add' has @RequireNamedArgument"
+            "Argument '2' should have name 'a' because the target function is @RequireNamedArgument."
+        ))
+        assertTrue(result.messages.contains(
+            "Argument '3' should have name 'b' because the target function is @RequireNamedArgument."
         ))
     }
 
