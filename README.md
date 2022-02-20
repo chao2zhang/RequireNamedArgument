@@ -22,11 +22,6 @@ Once this issue is addressed by Jetbrains/Kotlin, this solution should be deprec
 
 A full example can be found in `sample/`.
 
-## TODO
-
-- Add unit tests
-- Support annotating specific parameters
-
 ## License
 ```
 Copyright 2021 Chao Zhang
