@@ -7,6 +7,10 @@ import org.jetbrains.kotlin.descriptors.ModuleDescriptor
 import org.jetbrains.kotlin.extensions.StorageComponentContainerContributor
 import org.jetbrains.kotlin.name.FqName
 import org.jetbrains.kotlin.platform.TargetPlatform
+import org.jetbrains.kotlin.psi.KtExpression
+import org.jetbrains.kotlin.psi.KtLabeledExpression
+import org.jetbrains.kotlin.psi.KtLambdaArgument
+import org.jetbrains.kotlin.psi.ValueArgument
 import org.jetbrains.kotlin.resolve.calls.checkers.CallChecker
 import org.jetbrains.kotlin.resolve.calls.checkers.CallCheckerContext
 import org.jetbrains.kotlin.resolve.calls.model.ResolvedCall
@@ -29,9 +33,11 @@ class RnaCallChecker : CallChecker, StorageComponentContainerContributor {
         if (!resolvedCall.resultingDescriptor.annotations.hasAnnotation(ANNOTATION_FQ_NAME)) {
             return
         }
-        resolvedCall.valueArgumentsByIndex
-        resolvedCall.call.valueArguments.forEachIndexed { index, arg ->
-            if (!arg.isNamed()) {
+
+        val valueArguments = resolvedCall.call.valueArguments
+        valueArguments.forEachIndexed { index, arg ->
+            val isTrailingLambda = index == valueArguments.lastIndex && arg.isTrailingLambda()
+            if (!arg.isNamed() && !isTrailingLambda) {
                 // Fallback to raw index if the parameter is missing at the given index
                 val parameterName = resolvedCall
                     .resultingDescriptor
@@ -52,3 +58,14 @@ class RnaCallChecker : CallChecker, StorageComponentContainerContributor {
 }
 
 private val ANNOTATION_FQ_NAME = FqName(RequireNamedArgument::class.qualifiedName!!)
+
+private fun ValueArgument.isTrailingLambda() =
+  this is KtLambdaArgument && getArgumentExpression()?.isLambdaOutsideParentheses() == true
+
+private fun KtExpression.isLambdaOutsideParentheses(): Boolean {
+  return when (val parent = parent) {
+    is KtLambdaArgument -> true
+    is KtLabeledExpression -> parent.isLambdaOutsideParentheses()
+    else -> false
+  }
+}
